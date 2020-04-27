@@ -10,6 +10,20 @@ WIN_COMBINATIONS = [
   [2, 4, 6]
 ].freeze
 
+def play(board)
+  until over?(board)
+    turn(board)
+  end
+
+  if won?(board)
+      puts "Congratulations #{winner(board)}!"
+      puts "You won!"
+  elsif draw?(board)
+      puts "Cat's Game!"
+      puts "The game is a draw. See you next time."
+  end
+end
+
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -101,17 +115,4 @@ def winner(board)
   end
 end
 
-def play(board)
-  until over?(board)
-    turn(board)
-  end
 
-  if won?(board)
-      puts "Congratulations #{winner(board)}!"
-      puts "You won!"
-  elsif draw?(board)
-      puts "Cat's Game!"
-      puts "The game is a draw. See you next time."
-  end
-
-end
